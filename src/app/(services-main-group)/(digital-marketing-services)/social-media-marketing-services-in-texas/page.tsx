@@ -38,7 +38,7 @@ export const metadata:Metadata = {
             url: "/upload/SMM-company-chennai.webp",
             width: 600,
             height: 500,
-            alt: "social-media-ad-agency.webp",
+            alt: "Social media marketing in Texas",
             type: "image/webp"
         },
         ],

@@ -1,10 +1,22 @@
 "use client";
 
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import type { CSSProperties, ReactElement } from "react";
 
-/* ─── Types ──────────────────────────────────────────────────────────────── */
+/** Section comment kept ASCII-only — Next.js code-frame can panic on unicode box chars + TS diagnostics. */
+
 const BOOK_DEMO = "#book-demo";
+
+type VisualKey =
+  | "bulkSend"
+  | "template"
+  | "workflow"
+  | "drip"
+  | "audience"
+  | "analytics"
+  | "integrations"
+  | "api";
 
 const PLATFORM_TABS = [
   {
@@ -119,9 +131,9 @@ const PLATFORM_TABS = [
   },
 ];
 
-/* ─── Card visuals ────────────────────────────────────────────────────────── */
-function CardVisual({ visual, accent }: { visual: string; accent: string }) {
-  const vis = {
+/* Card visuals */
+function CardVisual({ visual, accent }: { visual: VisualKey; accent: string }) {
+  const visuals: Record<VisualKey, ReactElement> = {
     bulkSend: (
       <svg viewBox="0 0 200 120" className="w-full h-full" style={{ color: accent }}>
         <rect x="20" y="18" width="160" height="84" rx="8" fill="currentColor" fillOpacity=".07" stroke="currentColor" strokeOpacity=".18" strokeWidth="1"/>
@@ -222,18 +234,20 @@ function CardVisual({ visual, accent }: { visual: string; accent: string }) {
       </svg>
     ),
   };
-  return vis[visual] ?? null;
+  return visuals[visual] ?? null;
 }
 
-/* ─── Main component ──────────────────────────────────────────────────────── */
+/* Main component */
 export function RazeMailPlatformShowcase({ leadFormUrl = "#start" }) {
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const [activeIdx, setActiveIdx] = useState(0);
-  const panelRefs = useRef([]);
+  const panelRefs = useRef<Array<HTMLDivElement | null>>(
+    Array.from({ length: PLATFORM_TABS.length }, () => null)
+  );
 
   /* Intersection observer — track which panel is in view */
   useEffect(() => {
-    const observers = [];
+    const observers: IntersectionObserver[] = [];
     panelRefs.current.forEach((el, i) => {
       if (!el) return;
       const obs = new IntersectionObserver(
@@ -317,10 +331,10 @@ export function RazeMailPlatformShowcase({ leadFormUrl = "#start" }) {
                       <div
                         key={tab.id}
                         className={`pm-nav-pill ${activeIdx === i ? 'active' : ''}`}
-                        style={{ '--pill-accent': tab.accent }}
+                        style={{ '--pill-accent': tab.accent } as CSSProperties}
                         aria-current={activeIdx === i ? 'true' : undefined}
                       >
-                        <span className="pm-dot" style={{ '--pill-accent': tab.accent }}/>
+                        <span className="pm-dot" style={{ '--pill-accent': tab.accent } as CSSProperties}/>
                         <span className="pm-icon">{tab.icon}</span>
                         <span>{tab.label}</span>
                       </div>
@@ -342,9 +356,11 @@ export function RazeMailPlatformShowcase({ leadFormUrl = "#start" }) {
               {PLATFORM_TABS.map((tab, i) => (
                 <div
                   key={tab.id}
-                  ref={el => panelRefs.current[i] = el}
+                  ref={(el) => {
+                    panelRefs.current[i] = el;
+                  }}
                   className="pm-panel"
-                  style={{ '--sec-accent': tab.accent }}
+                  style={{ '--sec-accent': tab.accent } as CSSProperties}
                 >
                   <div className="pm-panel-content w-full">
 
@@ -383,7 +399,7 @@ export function RazeMailPlatformShowcase({ leadFormUrl = "#start" }) {
                               backgroundSize: '28px 28px',
                             }} aria-hidden/>
                             <div className="relative w-full h-full">
-                              <CardVisual visual={card.visual} accent={tab.accent} />
+                              <CardVisual visual={card.visual as VisualKey} accent={tab.accent} />
                             </div>
                           </div>
 
