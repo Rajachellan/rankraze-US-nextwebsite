@@ -12,6 +12,7 @@ import Footer from "./components/UI/Footer";
 import SlideOutDrawer from "./components/UI/SlideOutDrawer";
 import NavigationBar from "./components/UI/Navigation";
 import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import ModalProvider from "./components/provider/ModalProvider";
 import WhatsappIcon from "./components/UI/WhatsappIcon"
 import { ToastContainer } from 'react-toastify';
@@ -143,6 +144,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* DNS prefetch for external resources */}
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.clarity.ms" />
         <link rel="dns-prefetch" href="https://embed.tawk.to" />
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
@@ -154,26 +157,6 @@ export default function RootLayout({
             __html: `(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css';document.head.appendChild(l);})();`,
           }}
         />
-
-        {/* Google Analytics (gtag.js) */}
-        <Script
-          id="gtag-js"
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-XRQSNF80ZC"
-        />
-        <Script
-          id="gtag-config"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-XRQSNF80ZC');
-            `,
-          }}
-        />
-
         {/* Microsoft Clarity Analytics */}
         <Script
           id="microsoft-clarity"
@@ -245,6 +228,7 @@ export default function RootLayout({
           }}
         />
         <WhatsappIcon />
+        <GoogleAnalytics gaId="G-VQNE3E4KHR" />
       </body>
     </html>
   );

@@ -10,6 +10,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@next/third-parties": "^16.2.7",
     "@tailwindcss/typography": "^0.5.19",
     "@vercel/analytics": "^1.1.4",
     "@vercel/blob": "^2.0.0",
