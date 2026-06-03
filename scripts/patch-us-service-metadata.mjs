@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 
+
 /** Per-file string replacements (order matters for overlaps). */
 const filePatches = {
   "src/app/(services-main-group)/(web-services)/web-hosting/page.tsx": [
