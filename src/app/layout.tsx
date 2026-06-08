@@ -13,6 +13,7 @@ import Footer from "./components/UI/Footer";
 import SlideOutDrawer from "./components/UI/SlideOutDrawer";
 import NavigationBar from "./components/UI/Navigation";
 import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import ModalProvider from "./components/provider/ModalProvider";
 import WhatsappIcon from "./components/UI/WhatsappIcon"
 import { ToastContainer } from 'react-toastify';
@@ -227,6 +228,7 @@ export default function RootLayout({
           }}
         />
         <WhatsappIcon />
+        <GoogleAnalytics gaId="G-VQNE3E4KHR" />
       </body>
     </html>
   );
