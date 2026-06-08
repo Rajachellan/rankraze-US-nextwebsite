@@ -12,9 +12,6 @@ export default function Header ({
     const [visible, setVisible] = useState(true);
     const lastScrollY = useRef(0);
 
-    // Mobile drop down menu option
-
-
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
@@ -35,21 +32,19 @@ export default function Header ({
     }, []);
 
     return (
-        <header className={`w-full flex items-center justify-center h-20 fixed z-50 top-0 left-0 bg-white dark:bg-[var(--prim-dark-bg)]
+        <header className={`w-full h-20 fixed z-50 top-0 left-0 bg-white dark:bg-[var(--prim-dark-bg)]
                             transition-transform duration-400 ease-in-out
                             ${visible ? "translate-y-0" : "-translate-y-full"}
                             opacity-100 transition-opacity duration-500 ease-in-out
                             ${visible ? "opacity-100" : "opacity-0"}`}>
-            {/* Desktop Navigation Bar "data" have desktop nav bar */}                    
-            { data }
-            
-            {/* Out side Header Dark mode toggle */}
-            <div className="sm:hidden 2lg:block xl:hidden absolute top-full right-0 rounded-full bg-white dark:bg-transparent mt-2">
-                <ThemeSwitch />
+            <div className="w-full h-full flex items-center justify-center px-2 sm:px-4">
+                { data }
+                <MobileNavigationBar />
             </div>
 
-            {/* Mobile & Tablet Navigation Bar */}
-            <MobileNavigationBar />
+            <div className="sm:hidden lg:block xl:hidden absolute top-full right-0 rounded-full bg-white dark:bg-transparent mt-2">
+                <ThemeSwitch />
+            </div>
         </header>
     )
 }

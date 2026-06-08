@@ -6,6 +6,7 @@ export const metadata: Metadata = {
 import { DM_Sans, Sora, Bricolage_Grotesque, Syne } from "next/font/google";
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
+import "remixicon/fonts/remixicon.css";
 import { Provider } from "./Providers";
 import Header from "./components/UI/Header";
 import Footer from "./components/UI/Footer";
@@ -141,64 +142,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* DNS prefetch for external resources */}
-        <link rel="dns-prefetch" href="https://www.clarity.ms" />
-        <link rel="dns-prefetch" href="https://embed.tawk.to" />
-        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-        {/* Load Remixicon non-blocking — injected after hydration to avoid render-blocking CSS */}
-        <Script
-          id="remixicon-css"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css';document.head.appendChild(l);})();`,
-          }}
-        />
-
-        {/* Google Analytics (gtag.js) */}
-        <Script
-          id="gtag-js"
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-XRQSNF80ZC"
-        />
-        <Script
-          id="gtag-config"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-XRQSNF80ZC');
-            `,
-          }}
-        />
-
-        {/* Microsoft Clarity Analytics */}
-        <Script
-          id="microsoft-clarity"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "v7xou0slrp");
-            `,
-          }}
-        />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-        />
-
-      </head>
       <body
         className={`${dmSans.variable} ${sora.variable} ${bricolage.variable} ${syne.variable} ${dmSans.className} font-[var(--font-dm-sans)] font-sans antialiased bg-white text-[#171717] dark:bg-[var(--prim-dark-bg)] dark:text-[#E2EEFF]`}
         suppressHydrationWarning={true}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        />
         {/* 🔹 Skip link (recommended but optional) */}
         <a
           href="#main-content"
@@ -221,6 +172,37 @@ export default function RootLayout({
             <Footer />
           </ModalProvider>
         </Provider>
+
+        <Script
+          id="gtag-js"
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-XRQSNF80ZC"
+        />
+        <Script
+          id="gtag-config"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-XRQSNF80ZC');
+            `,
+          }}
+        />
+        <Script
+          id="microsoft-clarity"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "v7xou0slrp");
+            `,
+          }}
+        />
 
         {/* Tawk.to Chat Widget - Deferred until browser is fully idle */}
         <Script

@@ -1,0 +1,72 @@
+/* Leaflet map shell + third-party DOM overrides */
+.leaflet-map-container {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.leaflet-map-container .leaflet-container {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  background: #f8fafc;
+  font-family: inherit;
+}
+
+.leaflet-map-container .leaflet-control-attribution {
+  font-size: 10px;
+}
+
+/* Leaflet divIcon pins — injected as HTML strings, not scanned by Tailwind */
+.rankraze-map-pin-wrapper {
+  background: transparent;
+  border: none;
+}
+
+.rankraze-map-pin {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--primary-green, #3cba99);
+  cursor: pointer;
+  position: relative;
+}
+
+.rankraze-map-pin::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--primary-green, #3cba99);
+  animation: rankraze-map-ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  transform: scale(1.5);
+  z-index: -1;
+}
+
+.rankraze-map-pin__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #052e16;
+}
+
+.rankraze-map-pin--active {
+  transform: scale(1.15);
+}
+
+@keyframes rankraze-map-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  75%,
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}

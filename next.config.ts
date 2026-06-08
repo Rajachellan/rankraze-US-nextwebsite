@@ -234,6 +234,16 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/digital-marketing-agency-in-korattur',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/digital-marketing-agency-in-guindy',
+        destination: '/',
+        permanent: true,
+      },
+      {
         source: '/irqs-case-study-2',
         destination: '/irclass-case-study',
         permanent: true,

@@ -7,17 +7,14 @@ import ContactFormModalButtonOne from "./ContactFormModalButtonOne";
 export default function NavigationBar() {
     return (
         <>
-            <div className="hidden w-full h-full max-w-7xl 2lg:flex items-center justify-between">
-                <div className="px-2 py-4 cursor-pointer">
-
-                    <Link href="/"><Image src="/rankraze-logo.webp" alt="Rankraze logo - home page" width={144} height={55} priority sizes="(max-width: 768px) 144px, 144px" quality={65} className="w-36 dark:invert dark:brightness-0 h-auto" style={{ height: 'auto' }}/></Link>
-
+            <div className="hidden w-full h-full max-w-[1600px] mx-auto px-4 sm:px-6 xl:px-8 xl:flex items-center gap-3 2xl:gap-5">
+                <div className="shrink-0 py-2">
+                    <Link href="/"><Image src="/rankraze-logo.webp" alt="Rankraze logo - home page" width={144} height={55} priority sizes="(max-width: 768px) 144px, 144px" quality={65} className="w-32 2xl:w-36 dark:invert dark:brightness-0 h-auto" style={{ height: 'auto' }}/></Link>
                 </div>
-                <div className="h-full min-h-full flex gap-2 items-center justify-center felx-1">
-                    <nav className="capitalize h-full px-1 pr-4">
-                        <ul className="flex items-center justify-center gap-2 lg:gap-2 xl:gap-4 xl:w-[864px] h-full font-medium text-sm text-[var(--text-gray)] dark:text-white">
-                            <li className="h-full hover:text-[var(--primary-green)] transform ease-in-out duration-700 py-7 flex gap-1 items-center">
-                                <Link href="/" className="">Home</Link>
+                <nav className="capitalize flex-1 min-w-0 flex items-center justify-center">
+                    <ul className="flex items-center justify-center gap-x-1.5 2xl:gap-x-3 h-full font-medium text-[13px] 2xl:text-sm text-[var(--text-gray)] dark:text-white">
+                            <li className="h-full hover:text-[var(--primary-green)] transform ease-in-out duration-700 py-7 flex gap-1 items-center whitespace-nowrap">
+                                <Link href="/" className="px-1 2xl:px-1.5">Home</Link>
                             </li>
                             <li className="h-full hover:text-[var(--primary-green)] transform ease-in-out duration-700 py-7 flex gap-1 items-center whitespace-nowrap">
                                 <Link href="/about-rankraze-digital-marketing-agency" className="">About Us</Link>
@@ -162,8 +159,6 @@ export default function NavigationBar() {
                                         </ul> */}
                                     </li>
 
-
-
                                     <li className="w-full transform ease-in-out duration-700 flex items-center group/video relative text-[var(--text-gray)] dark:text-white hover:bg-[var(--primary-green)] hover:text-white dark:hover:bg-white dark:hover:text-[var(--text-gray)]">
                                         <Link href="" className="whitespace-nowrap px-5 py-3">
                                             Video Productions
@@ -259,7 +254,7 @@ export default function NavigationBar() {
                                         </ul>
                                     </li>
 
-                                      <li className="w-full transform ease-in-out duration-700 flex items-center group/ai relative text-[var(--text-gray)] dark:text-white hover:bg-[var(--primary-green)] hover:text-white dark:hover:bg-white dark:hover:text-[var(--text-gray)]">
+                                    <li className="w-full transform ease-in-out duration-700 flex items-center group/ai relative text-[var(--text-gray)] dark:text-white hover:bg-[var(--primary-green)] hover:text-white dark:hover:bg-white dark:hover:text-[var(--text-gray)]">
                                         <Link href="/software-development" className="whitespace-nowrap px-5 py-3">
                                             software Development
                                         </Link>
@@ -280,46 +275,16 @@ export default function NavigationBar() {
                                                     skalelit CRM
                                                 </Link>
                                             </li>
-                                            {/* <li className="w-full transform ease-in-out duration-700 flex items-center group relative text-[var(--text-gray)] dark:text-white hover:bg-[var(--primary-green)] hover:text-white dark:hover:bg-white dark:hover:text-[var(--text-gray)]">
-                                                <Link href="hr-automation-process" className="whitespace-nowrap px-5 py-2">
-                                                    Hr Automation Process
+                                            <li className="w-full transform ease-in-out duration-700 flex items-center group relative text-[var(--text-gray)] dark:text-white hover:bg-[var(--primary-green)] hover:text-white dark:hover:bg-white dark:hover:text-[var(--text-gray)]">
+                                                <Link href="/lms-software-india" className="whitespace-nowrap px-5 py-2">
+                                                    LMS Software
                                                 </Link>
                                             </li>
                                             <li className="w-full transform ease-in-out duration-700 flex items-center group relative text-[var(--text-gray)] dark:text-white hover:bg-[var(--primary-green)] hover:text-white dark:hover:bg-white dark:hover:text-[var(--text-gray)]">
-                                                <Link href="event-management" className="whitespace-nowrap px-5 py-2">
-                                                    Event Management
-                                                </Link>
-                                            </li>
-                                            <li className="w-full transform ease-in-out duration-700 flex items-center group relative text-[var(--text-gray)] dark:text-white hover:bg-[var(--primary-green)] hover:text-white dark:hover:bg-white dark:hover:text-[var(--text-gray)]">
-                                                <Link href="lms" className="whitespace-nowrap px-5 py-2">
-                                                    LMS
-                                                </Link>
-                                            </li>
-                                            <li className="w-full transform ease-in-out duration-700 flex items-center group relative text-[var(--text-gray)] dark:text-white hover:bg-[var(--primary-green)] hover:text-white dark:hover:bg-white dark:hover:text-[var(--text-gray)]">
-                                                <Link href="video-email-automation" className="whitespace-nowrap px-5 py-2">
-                                                    Video Email Automation
-                                                </Link>
-                                            </li>
-                                            <li className="w-full transform ease-in-out duration-700 flex items-center group relative text-[var(--text-gray)] dark:text-white hover:bg-[var(--primary-green)] hover:text-white dark:hover:bg-white dark:hover:text-[var(--text-gray)]">
-                                                <Link href="response-handling-system" className="whitespace-nowrap px-5 py-2">
-                                                    Response Handling System
-                                                </Link>
-                                            </li>
-                                            <li className="w-full transform ease-in-out duration-700 flex items-center group relative text-[var(--text-gray)] dark:text-white hover:bg-[var(--primary-green)] hover:text-white dark:hover:bg-white dark:hover:text-[var(--text-gray)]">
-                                                <Link href="property-management-software" className="whitespace-nowrap px-5 py-2">
+                                                <Link href="/property-management-software" className="whitespace-nowrap px-5 py-2">
                                                     Property Management Software
                                                 </Link>
                                             </li>
-                                            <li className="w-full transform ease-in-out duration-700 flex items-center group relative text-[var(--text-gray)] dark:text-white hover:bg-[var(--primary-green)] hover:text-white dark:hover:bg-white dark:hover:text-[var(--text-gray)]">
-                                                <Link href="invoice-software" className="whitespace-nowrap px-5 py-2">
-                                                    Invoice Software
-                                                </Link>
-                                            </li>
-                                            <li className="w-full transform ease-in-out duration-700 flex items-center group relative text-[var(--text-gray)] dark:text-white hover:bg-[var(--primary-green)] hover:text-white dark:hover:bg-white dark:hover:text-[var(--text-gray)]">
-                                                <Link href="meeting-room-booking" className="whitespace-nowrap px-5 py-2">
-                                                    Meeting Room Booking
-                                                </Link>
-                                            </li> */}
                                         </ul>
                                     </li>
 
@@ -401,19 +366,18 @@ export default function NavigationBar() {
                                 </ul>
                             </li>
                             <li className="h-full hover:text-[var(--primary-green)] transform ease-in-out duration-700 py-7 flex gap-1 items-center whitespace-nowrap">
-                                <Link href="/csr-activities" className="">CSR Activities</Link>
-                            </li>
-                            <li className="h-full hover:text-[var(--primary-green)] transform ease-in-out duration-700 py-7 flex gap-1 items-center whitespace-nowrap">
-                                <Link href="/contact-us" className="hidden lg:block">Contact Us</Link>
-                                <i className="ri-phone-fill lg:hidden font-extrabold text-xl pl-1.5"></i>
+                                <Link href="/csr-activities" className="">CSR</Link>
                             </li>
                         </ul>
-                    </nav>
-                    <div className="hidden place-items-center lg:grid">
-                        <ContactFormModalButtonOne Button={"Get Started"} Dark={true} />
-                    </div>
-                </div>
-                <div className="place-items-center p-2 hidden xl:grid">
+                </nav>
+                <div className="shrink-0 flex items-center gap-2 2xl:gap-3">
+                    <ContactFormModalButtonOne Button={"Get Started"} Dark={true} />
+                    {/* <Link
+                        href="/contact-us"
+                        className="hidden 2xl:inline-block text-sm font-medium text-[var(--text-gray)] dark:text-white hover:text-[var(--primary-green)] whitespace-nowrap transition-colors duration-300"
+                    >
+                        Contact Us
+                    </Link> */}
                     <ThemeSwitch />
                 </div>
             </div>

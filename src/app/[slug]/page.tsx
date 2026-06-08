@@ -154,30 +154,24 @@ export default async function BlogPage({ params }: BlogPageProps) {
 // Generate metadata for SEO
 export async function generateMetadata({ params }: BlogPageProps) {
   const { slug } = await params;
+  const blogData = await fetchBlogById(slug);
 
-  try {
-    const blogData = await fetchBlogById(slug);
-
-    if (!blogData || !blogData.blog) {
-      notFound();
-    }
-
-    const { blog } = blogData;
-
-    return {
-      title: blog.metaTitle || blog.title,
-      description: blog.metaDesc || blog.content.substring(0, 160).replace(/<[^>]*>/g, ''),
-      keywords: blog.focusKeyword?.join(', ') || blog.tags?.join(', '),
-      openGraph: {
-        title: blog.metaTitle || blog.title,
-        description: blog.metaDesc || blog.content.substring(0, 160).replace(/<[^>]*>/g, ''),
-        images: blog.images ? [blog.images] : [],
-        type: 'article',
-        publishedTime: blog.pubDate,
-      },
-    };
-  } catch (error) {
-    console.error('Error generating metadata:', error);
+  if (!blogData?.blog) {
     notFound();
   }
+
+  const { blog } = blogData;
+
+  return {
+    title: blog.metaTitle || blog.title,
+    description: blog.metaDesc || blog.content.substring(0, 160).replace(/<[^>]*>/g, ''),
+    keywords: blog.focusKeyword?.join(', ') || blog.tags?.join(', '),
+    openGraph: {
+      title: blog.metaTitle || blog.title,
+      description: blog.metaDesc || blog.content.substring(0, 160).replace(/<[^>]*>/g, ''),
+      images: blog.images ? [blog.images] : [],
+      type: 'article',
+      publishedTime: blog.pubDate,
+    },
+  };
 }

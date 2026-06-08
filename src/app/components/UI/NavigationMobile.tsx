@@ -119,7 +119,7 @@ export default function MobileNavigationBar () {
 
     return (
         <>
-        <div className="w-full h-full flex items-center justify-between 2lg:hidden relative">
+        <div className="w-full h-full flex items-center justify-between xl:hidden relative">
             <div className="p-1.5 cursor-pointer dark:invert dark:brightness-0">
                 <Link href="/">
                 <Image
@@ -339,6 +339,12 @@ export default function MobileNavigationBar () {
                                             <li className="w-full flex flex-col items-left justify-start py-2" onClick={() => handleSetMenuButton()}>
                                                 <Link href="/crm-software-in-texas" className="px-6">skalelit CRM</Link>
                                             </li>
+                                            <li className="w-full flex flex-col items-left justify-start py-2" onClick={() => handleSetMenuButton()}>
+                                                <Link href="/lms-software-india" className="px-6">LMS Software</Link>
+                                            </li>
+                                            <li className="w-full flex flex-col items-left justify-start py-2" onClick={() => handleSetMenuButton()}>
+                                                <Link href="/property-management-software" className="px-6">Property Management Software</Link>
+                                            </li>
                                             {/* <li className="w-full flex flex-col items-left justify-start py-2" onClick={() => handleSetMenuButton()}>
                                                 <Link href="/hr-automation-process" className="px-6">Hr Automation Process</Link>
                                             </li>
@@ -366,6 +372,16 @@ export default function MobileNavigationBar () {
                                         </ul>
                                     </li>
                                 </ul>
+                            </li>
+                            <li className="w-full flex items-left justify-start py-2" onClick={() => handleSetMenuButton()}>
+                                <Link href="/lms-software-india" className={`px-6 ${pathName === "/lms-software-india" ? "" : ""}`}>
+                                    LMS Software
+                                </Link>
+                            </li>
+                            <li className="w-full flex items-left justify-start py-2" onClick={() => handleSetMenuButton()}>
+                                <Link href="/property-management-software" className={`px-6 ${pathName === "/property-management-software" ? "" : ""}`}>
+                                    Property Management Software
+                                </Link>
                             </li>
                             <li className="w-full flex flex-col items-left justify-start">
                                 <div className={`w-full flex items-left justify-start py-2 ${subMenus.portfolio ? 'bg-[var(--primary-green)] text-white rounded-xs dark:bg-white dark:text-[var(--primary-blue)]' : ''}`} onClick={() => handleSubMenusClick("portfolio")}>  
